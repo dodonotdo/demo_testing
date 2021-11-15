@@ -1,35 +1,16 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../config/db");
 
-const event_notification_table = sequelize.define("persons", {
-  uid: {
+const persons = sequelize.define("persons", {
+  user_id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
     allowNull: false,
     primaryKey: true,
   },
-
-  username: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-
-  password: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-
-  email_id: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-  createdAt: {
-    type: Sequelize.DATEONLY,
-  },
-
-  updatedAt: {
-    type: Sequelize.DATE,
-  },
+  username: { type: Sequelize.JSON, allowNull: false },
+  password: { type: Sequelize.JSON, allowNull: false },
+  email: { type: Sequelize.JSON, allowNull: false },
 });
 
-module.exports = event_notification_table;
+module.exports = persons;

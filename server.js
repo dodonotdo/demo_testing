@@ -6,10 +6,14 @@ const app = express();
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+var corsOptions = {
+  origin: "http://localhost:8081",
+};
 
-
-const sequelize = require('./config/db');
+const sequelize = require("./config/db");
+const persons = require('./models/event-table'); 
 sequelize.sync();
+sequelize.sync({force:true});
 
 // simple route
 app.get("/", (req, res) => {
