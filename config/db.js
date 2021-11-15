@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 
-const sequelize = new Sequelize("event-notifications", "user", "Password@123", {
+const sequelize = new Sequelize("event_notifications", "user", "Password@123", {
   host: "localhost",
   logging: false,
   dialect: "mysql",
