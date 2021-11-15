@@ -11,9 +11,11 @@ var corsOptions = {
 };
 
 const sequelize = require("./config/db");
-const persons = require('./models/event-table'); 
+const users = require('./models/event-table'); 
 sequelize.sync();
-sequelize.sync({force:true});
+
+const user_route = require("./route/user_route");
+app.use("/users", user_route);
 
 // simple route
 app.get("/", (req, res) => {
@@ -25,3 +27,4 @@ const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
+
