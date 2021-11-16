@@ -9,6 +9,7 @@ const users = sequelize.define("users", {
     primaryKey: true,
   },
   event_details: { type: Sequelize.JSON, allowNull: false },
+  // created_at: { type: Sequelize.DATETIME},
 });
 
 module.exports = users;

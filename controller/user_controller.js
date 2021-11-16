@@ -15,9 +15,23 @@ const create_users = (req, res) => {
     });
 };
 
-const get_user = async (req, res, next) => {
-    await event_table
-      .findAll()
+// const get_user = async (req, res, next) => {
+//     await event_table
+//       .findAll()
+//       .then((result) => {
+//         res.send(result);
+//       })
+//       .catch((error) => {
+//         res.status(500).send({
+//           message:
+//             error.message || "Some error occurred while retrieving event.",
+//         });
+//       });
+//     next();
+//   };
+
+  const get_user = async (req, res, next) => {
+    await event_table.findAll({order:[["user_id","DESC"]]})
       .then((result) => {
         res.send(result);
       })
@@ -29,7 +43,8 @@ const get_user = async (req, res, next) => {
       });
     next();
   };
-
+   
+  
 module.exports = {
   userRoot,
   create_users,
