@@ -13,7 +13,7 @@ const postEvents = (req, res) => {
     });
 };
 
-const getEvents = async (req, res, next) => {
+const getEvents = async (req, res) => {
   await event_table
     .findAll({ order: [["createdAt", "DESC"]] })
     .then((result) => {
@@ -24,11 +24,9 @@ const getEvents = async (req, res, next) => {
         message: error.message || "Some error occurred while retrieving event.",
       });
     });
-  next();
 };
 
 module.exports = {
-  eventRoot,
   postEvents,
   getEvents,
 };
