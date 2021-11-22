@@ -7,7 +7,7 @@ this is application design to store the events, based on the success and failure
 Evironment variables
 
 | Key | Value | Required | Description |
-|------|----| ---- | Database |
+|------|----| ---- | ------ |
 |  DB_NAME | " " | yes | Database |
 |  DB_HOST | " " | yes | Database |
 |  DB_USERNAME | " " | yes | Database |
