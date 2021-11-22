@@ -4,6 +4,7 @@ const userRoot = (req, res) => res.send("users api root");
 
 const create_users = (req, res) => {
   const event_details = req.body;
+  console.log(event_details);
   var jsObj = JSON.parse(JSON.stringify({ event_details }));
   let create_users = event_table.create(jsObj);
   create_users
@@ -30,23 +31,22 @@ const create_users = (req, res) => {
 //     next();
 //   };
 
-  const get_user = async (req, res, next) => {
-    await event_table.findAll({order:[["user_id","DESC"]]})
-      .then((result) => {
-        res.send(result);
-      })
-      .catch((error) => {
-        res.status(500).send({
-          message:
-            error.message || "Some error occurred while retrieving event.",
-        });
+const get_user = async (req, res, next) => {
+  await event_table
+    .findAll({ order: [["createdAt", "DESC"]] })
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((error) => {
+      res.status(500).send({
+        message: error.message || "Some error occurred while retrieving event.",
       });
-    next();
-  };
-   
-  
+    });
+  next();
+};
+
 module.exports = {
   userRoot,
   create_users,
-  get_user
+  get_user,
 };
