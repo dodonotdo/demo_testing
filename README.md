@@ -54,13 +54,13 @@ services:
     depends_on:
     - database
     ports:
-    - "4000:80"
+    - "80:4000"
     restart: always
     networks:
       - events
     environment:
       DB_HOST: database
-      DB_USER: events
+      DB_USERNAME: events
       DB_PASSWORD: events
       DB_NAME: events
 networks:
