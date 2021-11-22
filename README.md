@@ -12,6 +12,7 @@ Evironment variables
 |  DB_HOST | " " | yes |
 |  DB_USERNAME | " " | yes |
 |  DB_PASSWORD | " " | yes |
+|  PORT | 4000 | no |
 
 How to set environment variables in linux
 
