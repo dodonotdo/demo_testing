@@ -1,29 +1,29 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const morgan = require("morgan");
+const helmet = require("helmet");
 
 const app = express();
+app.use(express.json());
+app.use(cookieParser());
+app.use(morgan("combined"));
+app.use(cors());
+app.use(helmet());
 app.use(cors(corsOptions));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 var corsOptions = {
   origin: "http://localhost:8081",
 };
 
 const sequelize = require("./config/db");
-const users = require("./models/event-table");
 sequelize.sync();
 
 const user_route = require("./route/user_route");
-app.use("/users", user_route);
+app.use("/events", user_route);
 
-// simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to event-notification-backend application." });
-});
+app.get("/", (req, res) =>  res.json({ message: "Welcome to event-notification-backend application." }));
 
-// set port, listen for requests
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);

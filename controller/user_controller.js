@@ -1,10 +1,9 @@
 const event_table = require("../models/event-table");
 
-const userRoot = (req, res) => res.send("users api root");
+const eventRoot = (req, res) => res.send("users api root");
 
-const create_users = (req, res) => {
+const postEvents = (req, res) => {
   const event_details = req.body;
-  console.log(event_details);
   var jsObj = JSON.parse(JSON.stringify({ event_details }));
   let create_users = event_table.create(jsObj);
   create_users
@@ -16,22 +15,7 @@ const create_users = (req, res) => {
     });
 };
 
-// const get_user = async (req, res, next) => {
-//     await event_table
-//       .findAll()
-//       .then((result) => {
-//         res.send(result);
-//       })
-//       .catch((error) => {
-//         res.status(500).send({
-//           message:
-//             error.message || "Some error occurred while retrieving event.",
-//         });
-//       });
-//     next();
-//   };
-
-const get_user = async (req, res, next) => {
+const getEvents = async (req, res, next) => {
   await event_table
     .findAll({ order: [["createdAt", "DESC"]] })
     .then((result) => {
@@ -46,7 +30,7 @@ const get_user = async (req, res, next) => {
 };
 
 module.exports = {
-  userRoot,
-  create_users,
-  get_user,
+  eventRoot,
+  postEvents,
+  getEvents,
 };

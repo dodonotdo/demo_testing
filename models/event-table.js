@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../config/db");
 
-const users = sequelize.define("users", {
+const event_datas = sequelize.define("event_datas", {
   user_id: {
     type: Sequelize.UUID,
     defaultValue: Sequelize.UUIDV4,
@@ -11,4 +11,4 @@ const users = sequelize.define("users", {
   event_details: { type: Sequelize.JSON, allowNull: false },
 });
 
-module.exports = users;
+module.exports = event_datas;
