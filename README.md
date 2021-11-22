@@ -70,3 +70,9 @@ volumes:
   events:
 
 ```
+
+Requests
+
+```bash
+curl -X POST -d '{ "name": "fourtimes", "sports": "cricket" }' "http://ado.dodonotdo.in/events/create"  -H "Content-Type: application/json"
+```
