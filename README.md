@@ -30,3 +30,43 @@ Docker build and run the following command
 
     docker build -t event-notification .
     docker run -d -p 4000:40000 --name event-notification event-notification
+
+Docker compose command
+
+```yml
+
+# vim docker-compose.yml
+version: "3"
+services:
+  database:
+    image: mysql:5.7
+    networks:
+      - events
+    volumes:
+    - events:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: events
+      MYSQL_DATABASE: events
+      MYSQL_USER: events
+      MYSQL_PASSWORD: events
+  events:
+    image: jjino/event-notification
+    depends_on:
+    - database
+    ports:
+    - "4000:80"
+    restart: always
+    networks:
+      - events
+    environment:
+      DB_HOST: database
+      DB_USER: events
+      DB_PASSWORD: events
+      DB_NAME: events
+networks:
+  events:
+    driver: bridge
+volumes:
+  events:
+
+```
