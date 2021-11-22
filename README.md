@@ -1,13 +1,13 @@
-##### event-notification-backend
+### event-notification-backend
 
-this is application designed to store the events based on the success and failure notifications.
+this is application design to store the events, based on the success and failure.
 
 
 
 Evironment variables
 
 |   Key |       Value     | Required |
-|---------------|-----------------| ---- |
+|------|----| ---- |
 |  DB_NAME | " " | yes |
 |  DB_HOST | " " | yes |
 |  DB_USERNAME | " " | yes |
