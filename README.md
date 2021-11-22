@@ -76,3 +76,57 @@ Requests
 ```bash
 curl -X POST -d '{ "name": "fourtimes", "sports": "cricket" }' "http://ado.dodonotdo.in/events/create"  -H "Content-Type: application/json"
 ```
+
+
+kubernetes life-cycle process
+
+```yml
+# https://github.com/kubernetes-client/javascript
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: lifecycle-demo
+spec:
+  containers:
+  - name: lifecycle-demo-container
+    image: nginx
+    terminationMessagePath: "/tmp/termination.log"
+    env:
+    - name: NODE_NAME
+      valueFrom:
+        fieldRef:
+          fieldPath: spec.nodeName
+    - name: POD_NAME
+      valueFrom:
+        fieldRef:
+          fieldPath: metadata.name
+    - name: POD_NAMESPACE
+      valueFrom:
+        fieldRef:
+          fieldPath: metadata.namespace
+    - name: POD_IP
+      valueFrom:
+        fieldRef:
+          fieldPath: status.podIP
+    - name: POD_SERVICE_ACCOUNT
+      valueFrom:
+        fieldRef:
+          fieldPath: spec.serviceAccountName
+    lifecycle:
+      postStart:
+        exec:
+          command:
+          - sh
+          - -c
+          - |
+              curl -H "Content-Type: application/json" -d '{"Namespace": "'$POD_NAMESPACE'", "POD": "'$POD_NAME'", "POD_IP": "'$POD_IP'", "RUNNING_POD_HOSTNAME": "'$NODE_NAME'", "STATUS": "Pod started"}' -X POST http://ado.dodonotdo.in/events/create
+      preStop:
+        exec:
+          command:
+          - sh
+          - -c
+          - |
+              reason=`cat /tmp/termination.log`
+              curl -H "Content-Type: application/json" -d '{"Namespace": "'$POD_NAMESPACE'", "POD": "'$POD_NAME'", "POD_IP": "'$POD_IP'", "RUNNING_POD_HOSTNAME": "'$NODE_NAME'", "STATUS": "Pod deleted"}' -X POST http://ado.dodonotdo.in/events/create
+```
