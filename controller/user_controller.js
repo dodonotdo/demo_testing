@@ -1,7 +1,5 @@
 const event_table = require("../models/event-table");
 
-const eventRoot = (req, res) => res.send("users api root");
-
 const postEvents = (req, res) => {
   const event_details = req.body;
   var jsObj = JSON.parse(JSON.stringify({ event_details }));
