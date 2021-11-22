@@ -1,4 +1,4 @@
-### event-notification-backend
+### Event-notification-backend
 
 this is application design to store the events, based on the success and failure.
 
