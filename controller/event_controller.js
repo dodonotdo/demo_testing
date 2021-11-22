@@ -2,8 +2,8 @@ const event_table = require("../models/event_table");
 
 const postEvents = (req, res) => {
   const event_details = req.body;
-  var jsObj = JSON.parse(JSON.stringify({ event_details }));
-  let events = event_table.create(jsObj);
+  var dataObject = JSON.parse(JSON.stringify({ event_details }));
+  let events = event_table.create(dataObject);
   events
     .then((data) => res.send(data))
     .catch((err) => {
