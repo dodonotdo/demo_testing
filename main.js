@@ -12,15 +12,19 @@ app.use(cors());
 app.use(helmet());
 app.use(cors(corsOptions));
 
-var corsOptions = {
-  origin: "http://localhost:8081",
-};
+
 
 const sequelize = require("./config/db");
 sequelize.sync();
 
-const user_route = require("./route/user_route");
-app.use("/events", user_route);
+var corsOptions = {
+  origin: "http://localhost:8081",
+};
+
+
+
+const event_route = require("./route/event_route");
+app.use("/events", event_route);
 
 app.get("/", (req, res) =>  res.json({ message: "Welcome to event-notification-backend application." }));
 

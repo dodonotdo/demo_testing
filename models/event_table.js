@@ -2,7 +2,7 @@ const Sequelize = require("sequelize");
 const sequelize = require("../config/db");
 
 const event_datas = sequelize.define("event_datas", {
-  user_id: {
+  uuid: {
     type: Sequelize.UUID,
     defaultValue: Sequelize.UUIDV4,
     allowNull: false,

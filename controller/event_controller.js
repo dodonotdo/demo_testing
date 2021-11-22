@@ -1,4 +1,4 @@
-const event_table = require("../models/event-table");
+const event_table = require("../models/event_table");
 
 const postEvents = (req, res) => {
   const event_details = req.body;
