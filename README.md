@@ -1,6 +1,6 @@
 ### Event-notification-backend
 
-this is application design to store the events, based on the success and failure.
+`this is application design to store the events, based on the success and failure.`
 
 
 
@@ -23,7 +23,10 @@ How to set environment variables in linux
 
 In the project directory, you can run
 
+    npm install
+    node main.js
 
-`npm install`
+Docker build and run the following command
 
-`node main.js`
+    docker build -t event-notification .
+    docker run -d -p 4000:40000 --name event-notification event-notification
