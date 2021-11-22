@@ -130,3 +130,5 @@ spec:
               reason=`cat /tmp/termination.log`
               curl -H "Content-Type: application/json" -d '{"Namespace": "'$POD_NAMESPACE'", "POD": "'$POD_NAME'", "POD_IP": "'$POD_IP'", "RUNNING_POD_HOSTNAME": "'$NODE_NAME'", "STATUS": "Pod deleted"}' -X POST http://ado.dodonotdo.in/events/create
 ```
+
+![kubernetes notification](https://user-images.githubusercontent.com/57703276/142879784-c21c3855-8b1d-4c8e-a78b-b6f7448e19a5.png)
