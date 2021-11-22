@@ -3,8 +3,8 @@ const event_table = require("../models/event_table");
 const postEvents = (req, res) => {
   const event_details = req.body;
   var jsObj = JSON.parse(JSON.stringify({ event_details }));
-  let create_users = event_table.create(jsObj);
-  create_users
+  let events = event_table.create(jsObj);
+  events
     .then((data) => res.send(data))
     .catch((err) => {
       res.status(500).send({

@@ -13,7 +13,7 @@ Evironment variables
 |  DB_USERNAME | " " | yes |
 |  DB_PASSWORD | " " | yes |
 
-In linux
+How to set environment variables in linux
 
     export DB_NAME=""
     export DB_HOST=""
