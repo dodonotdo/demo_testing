@@ -2,10 +2,9 @@ const Sequelize = require("sequelize");
 const sequelize = require("../config/db");
 
 const testing_details = sequelize.define("testing_details", {
-  uuid: {
-    type: Sequelize.UUID,
-    defaultValue: Sequelize.UUIDV4,
-    allowNull: false,
+  id: {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
     primaryKey: true,
   },
   name: {
