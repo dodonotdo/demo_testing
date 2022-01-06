@@ -23,12 +23,13 @@ var corsOptions = {
 
 
 
-const event_route = require("./route/event_route");
-app.use("/events", event_route);
+const test_route = require("./route/test_route");
+app.use("/testing", test_route);
 
-app.get("/", (req, res) =>  res.json({ message: "Welcome to event-notification-backend application." }));
+app.get("/", (req, res) =>  res.json({ message: "Welcome to testing application." }));
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 6000;
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });

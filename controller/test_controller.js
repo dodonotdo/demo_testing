@@ -1,9 +1,9 @@
-const event_table = require("../models/event_table");
+const test_table = require("../models/test_table");
 
-const postEvents = (req, res) => {
+const postTesting = (req, res) => {
   const event_details = req.body;
-  var dataObject = JSON.parse(JSON.stringify({ event_details }));
-  let events = event_table.create(dataObject);
+  // var dataObject = JSON.parse(JSON.stringify({ event_details }));
+  let events = test_table.create(event_details);
   events
     .then((data) => res.send(data))
     .catch((err) => {
@@ -13,9 +13,9 @@ const postEvents = (req, res) => {
     });
 };
 
-const getEvents = async (req, res) => {
-  await event_table
-    .findAll({ order: [["createdAt", "DESC"]] })
+const getTesting = async (req, res) => {
+  await test_table
+    .findAll()
     .then((result) => {
       res.send(result);
     })
@@ -27,6 +27,6 @@ const getEvents = async (req, res) => {
 };
 
 module.exports = {
-  postEvents,
-  getEvents,
+  postTesting,
+  getTesting,
 };
