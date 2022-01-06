@@ -1,9 +1,8 @@
 const test_table = require("../models/test_table");
 
 const postTesting = (req, res) => {
-  const event_details = req.body;
-  // var dataObject = JSON.parse(JSON.stringify({ event_details }));
-  let events = test_table.create(event_details);
+  const details = req.body;
+  let events = test_table.create(details);
   events
     .then((data) => res.send(data))
     .catch((err) => {
